@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <link rel='stylesheet' href="{{ url_for('static',filename='style.css') }}">
+    <script src="{{url_for('static',filename='jquery-3.6.0.js') }}"></script>
+    <!--allows scaling for different screen sizes-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scouting App</title>
+</head>
+
+<body>
+    <div>
+        <h1>
+            <center>
+                <p>Scouting App</p>
+            </center>
+        </h1>
+    </div>
+    <div>
+        <center>
+            <p>
+                <b style="color: #d90429;">Remastered</b>
+            </p>
+            <!--TODO: make video offline ;p-->
+            <a href="/display">
+                To Display Page
+            </a>
+        </center>
+    </div>
+    <!--Change location to /cgi-bin/database.py when moved to /usr/lib/cgi-bin/-->
+    <form action = "/cgi-bin/database.py" method="post">
+        <div class = "teamColor-cont">
+            <p id="teamColorText">
+                <b>Team Color:</b>
+            </p>
+            <input required type="radio" name="teamColor" id = "teamColorButtons" value="R">Red</input>
+            <input required type="radio" name="teamColor" id = "teamColorButtons" value="B">Blue</input>
+        </div> 
+    <div class = "container-row">
+        <div class = "header-left">
+            <p id="searchDescription">
+                <b>Enter Team ID Here:</b>
+            </p>
+            <input required type="text" name="teamId" id="teamId" maxlength="10" placeholder="Team Number"></input>
+            <!--only allow integer inputs in text-->
+            <script>
+                document.getElementById("teamId").onkeypress = function(e) {
+                    return /\d/.test(String.fromCharCode(e.charCode));
+                }
+            </script>
+        </div>
+        <div class = "header-right">
+            <p id="searchDescription">
+                <b>Enter Match Number Here:</b>
+            </p>
+            <input required type="text" name="matchNumber" id="matchNumber" maxlength="3" placeholder="Match Number"></input>
+            <!--only allow integer inputs in text-->
+            <script>
+                document.getElementById("matchNumber").onkeypress = function(e) {
+                    return /\d/.test(String.fromCharCode(e.charCode));
+                }
+            </script>
+        </div>
+    </div>
+</body>
+
+<body>          
+    <div class = "container">
+        <div class = "left-cont">
+            <center>
+            <div>
+                <p id = "Auton">
+                    <b>Auton</b>
+                </p>
+            </div>
+            <div>
+                <p>
+                    High Shots Made:
+                </p>
+                <input type="text" class="textInput" maxlength="2" name="AHS" id="autonHighShots">
+                <!--only allow integer inputs in text-->
+                <script>
+                    document.getElementById("autonHighShots").onkeypress = function(e) {
+                        return /\d/.test(String.fromCharCode(e.charCode));
+                    }
+                </script>
+            </div>
+            <div>
+                <p>
+                    Low Shots Made:
+                </p>
+                <input type="text" class="textInput" maxlength="2" name="ALS" id="autonLowShots">
+                <!--only allow integer inputs in text-->
+                <script>
+                    document.getElementById("autonLowShots").onkeypress = function(e) {
+                        return /\d/.test(String.fromCharCode(e.charCode));
+                    }
+                </script>
+            </div>
+            <div>
+                <p>
+                    Balls Missed:
+                </p>
+                <input type="text" class="textInput" maxlength="2" name="ABM" id="autonBallsMissed">
+                <!--only allow integer inputs in text-->
+                <script>
+                    document.getElementById("autonBallsMissed").onkeypress = function(e) {
+                        return /\d/.test(String.fromCharCode(e.charCode));
+                    }
+                </script>
+            </div>
+            <div>
+                <p>
+                    Got off the Platform:
+                </p>
+                <input type="radio" name="autonPlatform" id = "autonPlatformButtons" value="Y">Y</input>
+                <input type="radio" name="autonPlatform" id = "autonPlatformButtons" value="N">N</input>
+            </div>
+            <div>
+                <p>
+                    Basketball shot made: 
+                </p>
+                <input type="radio" name="autonBasketball" id = "autonBasketballButtons" value="Y">Y</input>
+                <input type="radio" name="autonBasketball" id = "autonBasketballButtons" value="N">N</input>
+            </div>
+        </center>
+        </div>
+        <div class = "right-cont">
+            <div>
+                <p id = "Teleop">
+                    <b>Teleop</b>
+                </p>
+            </div>
+            <div>
+                <p>
+                    Did The Robot Move?:
+                </p>
+                <input type="radio" name="teleopMove" id = "teleopMoveButtons" value="Y">Y</input>
+                <input type="radio" name="teleopMove" id = "teleopMoveButtons" value="N">N</input>
+            </div>
+            <div>
+                <p>
+                    High Shots made:
+                </p>
+                <input type="text" class="textInput" maxlength="2" name="THS" id="teleopHighShots">
+                <!--only allow integer inputs in text-->
+                <script>
+                    document.getElementById("teleopHighShots").onkeypress = function(e) {
+                        return /\d/.test(String.fromCharCode(e.charCode));
+                    }
+                </script>
+            </div>
+            <div>
+                <p>
+                    Low Shots made:
+                </p>
+                <input type="text" class="textInput" maxlength="2" name="TLS" id="teleopLowShots">
+                <!--only allow integer inputs in text-->
+                <script>
+                    document.getElementById("teleopLowShots").onkeypress = function(e) {
+                        return /\d/.test(String.fromCharCode(e.charCode));
+                    }
+                </script>
+            </div>
+            <div>
+                <p>
+                    Balls Missed:
+                </p>
+                <input type="text" class="textInput" maxlength="2" name="TBM" id="teleopShotsMissed">
+                <!--only allow integer inputs in text-->
+                <script>
+                    document.getElementById("teleopShotsMissed").onkeypress = function(e) {
+                        return /\d/.test(String.fromCharCode(e.charCode));
+                    }
+                </script>
+            </div>
+            <div>
+                <p>
+                    Burst Shots:
+                </p>
+                <input type="text" class="textInput" maxlength="2" name="TBS" id="teleopBurstShots">
+                <!--only allow integer inputs in text-->
+                <script>
+                    document.getElementById("teleopBurstShots").onkeypress = function(e) {
+                        return /\d/.test(String.fromCharCode(e.charCode));
+                    }
+                </script>
+            </div>
+            <div>
+                <p>
+                    Shot From Launchpad:
+                </p>
+                <input type="radio" name="teleopLaunchpad" id = "teleopLaunchpadButtons" value="Y">Y</input>
+                <input type="radio" name="teleopLaunchpad" id = "teleopLaunchpadButtons" value="N">N</input>
+            </div>
+        </div>
+        <div class = "spacer"></div>
+        <div class = "left-cont">
+            <center>
+            <div>
+                <p id = "Endgame">
+                    <b>Endgame</b>
+                </p>
+            </div>
+            <div>
+                <p>
+                    Attempted Climb: 
+                </p>
+                <input type="radio" name="endgameAttemptedClimb" id = "endgameAttemptedClimbButtons" value="Y">Y</input>
+                <input type="radio" name="endgameAttemptedClimb" id = "endgameAttemptedClimbButtons" value="N">N</input>
+            </div>
+            <div>
+                <!--Maybe make a dropdown like <option> or <select>-->
+                <p>
+                    Successful Climb Tier:
+                </p>
+                <input type="text" class="textInput" maxlength="1" name="ECT" id="endgameClimbTier">
+                <!--only allow integer inputs in text-->
+                <script>
+                    document.getElementById("endgameClimbTier").onkeypress = function(e) {
+                        return /\d/.test(String.fromCharCode(e.charCode));
+                    }
+                </script>
+            </div>
+            <div>
+                <p>
+                    Prepared in Endgame: 
+                </p>
+                <input type="radio" name="endgamePrepared" id = "endgamePreparedButtons" value="Y">Y</input>
+                <input type="radio" name="endgamePrepared" id = "endgamePreparedButtons" value="N">N</input>
+            </div>
+            <div>
+                <p>
+                    Climbed Faster Than 30 Seconds: 
+                </p>
+                <input type="radio" name="endgameClimbTime" id = "endgameClimbTimeButtons" value="Y">Y</input>
+                <input type="radio" name="endgameClimbTime" id = "endgameClimbTimeButtons" value="N">N</input>
+            </div>
+            <div>
+                <p>
+                    Win Status:
+                </p>
+                <input required type="radio" name="endgameWin" id = "endgameWinButtons" value="W">Won</input>
+                <input required type="radio" name="endgameWin" id="endgameWinButtons" value="T">Tied</input>
+                <input required type="radio" name="endgameWin" id="endgameWinButtons" value="L">Lost</input>
+
+            </div>
+        </div>
+        <div class = "right-cont">
+            <center>
+            <div>
+                <p id="Defense">
+                    <b>Defense</b>
+                </p>
+            </div>
+            <div>
+                <p>
+                    Attempted to Block Others: 
+                </p>
+                <input type="radio" name="defenseAttemptedBlock" id = "defenseAttemptedBlockButtons" value="Y">Y</input>
+                <input type="radio" name="defenseAttemptedBlock" id = "defenseAttemptedBlockButtons" value="N">N</input>
+            </div>
+            <div>
+                <p>
+                    Held Balls: 
+                </p>
+                <input type="radio" name="defenseHeldBalls" id = "defenseHeldBallsButtons" value="Y">Y</input>
+                <input type="radio" name="defenseHeldBalls" id = "defenseHeldBallsButtons" value="N">N</input>
+            </div>
+            </center>
+        </div>
+        <div class = "spacer"></div>
+        <div class = "center-cont">
+            <center>
+            <div>
+                <p id="Comments">
+                    <b>Comments:</b>
+                </p>
+                <!--maybe add maxlength to the maxlength of TEXT in mySQL?-->
+                <textarea rows="15" cols="50" name="comments" maxlength = "300" id="comments"></textarea>
+            </div>
+            <div>
+                <input type="submit" name="submit" value="Submit All" id="submit"></input>
+                <script>
+                    $(document).ready(function () {
+                        $("#submit").click(function () {
+                            return confirm("Are You Ready to Submit?");
+                        });
+                    });
+                </script>
+            </div>
+            </center>
+        </div>
+        <div class = "bottom-cont">
+        </div>
+    </div>
+</form>
+</body>
+<body>
+    
+</body>
+
+</html>
