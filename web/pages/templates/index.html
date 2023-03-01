@@ -77,7 +77,7 @@
             </div>
             <div>
                 <p>
-                    High Shots Made:
+                    High Cube/Cones Placed:
                 </p>
                 <input type="text" class="textInput" maxlength="2" name="AHS" id="autonHighShots">
                 <!--only allow integer inputs in text-->
@@ -89,7 +89,19 @@
             </div>
             <div>
                 <p>
-                    Low Shots Made:
+                    Mid Cube/Cones Placed:
+                </p>
+                <input type="text" class="textInput" maxlength="2" name="ALS" id="autonLowShots">
+                <!--only allow integer inputs in text-->
+                <script>
+                    document.getElementById("autonLowShots").onkeypress = function(e) {
+                        return /\d/.test(String.fromCharCode(e.charCode));
+                    }
+                </script>
+            </div>
+            <div>
+                <p>
+                    Low Cube/Cones Placed:
                 </p>
                 <input type="text" class="textInput" maxlength="2" name="ALS" id="autonLowShots">
                 <!--only allow integer inputs in text-->
